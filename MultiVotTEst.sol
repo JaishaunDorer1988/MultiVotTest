@@ -28,5 +28,7 @@ function castVote(uint256 _option) external notVoted validOption(_option) {
         votes[_option]++;
         emit VoteCasted(msg.sender, _option);
     }
-    
+    function getVoteCount(uint256 _option) external view validOption(_option) returns (uint256) {
+        return votes[_option];
+    }
 }
