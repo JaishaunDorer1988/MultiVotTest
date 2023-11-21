@@ -23,6 +23,10 @@ contract MultiOptionVoting {
         require(_totalOptions > 0, "Total options must be greater than 0");
         totalOptions = _totalOptions;
     }
-
+function castVote(uint256 _option) external notVoted validOption(_option) {
+        hasVoted[msg.sender] = true;
+        votes[_option]++;
+        emit VoteCasted(msg.sender, _option);
+    }
     
 }
