@@ -31,4 +31,11 @@ function castVote(uint256 _option) external notVoted validOption(_option) {
     function getVoteCount(uint256 _option) external view validOption(_option) returns (uint256) {
         return votes[_option];
     }
+function getTotalVotes() external view returns (uint256[] memory) {
+        uint256[] memory allVotes = new uint256[](totalOptions);
+        for (uint256 i = 1; i <= totalOptions; i++) {
+            allVotes[i - 1] = votes[i];
+        }
+        return allVotes;
+    }
 }
